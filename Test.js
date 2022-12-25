@@ -9,6 +9,7 @@ perfTime(() => {
         arr[i] = i - Math.random() * 1000;
 });
 const { setCalc, SetNew, superSetCalculator, calcArrayModel } = require('./All_comb_word_fn.js');
+const { SuperSet } = require('./SuperSet.js');
 
 
 
@@ -20,6 +21,10 @@ let result;
 
 
 
+perfTime(() => {
+    result = superSetCalculator(chars, iteration, notFirst, notLast); // check high?
+    WriteResult(result, 1);
+});
 
 
 perfTime(() => {
@@ -70,3 +75,20 @@ function WriteResult(result, t) {
     }
 }
 
+//test();
+function test() {
+    let ss = new SuperSet(null, "Test");
+    let sum1 = 0;
+    const testsize = 16777003;
+    for (let i = 0; i < testsize; i++) {
+        ss.add(i);
+        sum1 += i;
+    }
+    let sum = 0
+    for (const s of ss) {
+        sum += s;
+    }
+
+    console.log(sum);
+    console.log(sum1);
+}

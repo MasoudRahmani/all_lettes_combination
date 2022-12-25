@@ -51,7 +51,7 @@ function superSetCalculator(arr, iteration, notAtFirst = [], notLast = []) {
             });
         });
     }
-    for (let set of combs.sets) {
+    for (let set of combs.sets) { //بخاطر ذات سوپر ست احتمال تکراری، نیاز به بررسی
         removeUnwanted(set, notAtFirst, notLast);//Read-doc    
     }
     return combs.sets;
