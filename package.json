@@ -1,0 +1,17 @@
+{
+  "name": "all_lettes_combination",
+  "version": "2.2.1",
+  "description": "This App will Create all the combination of given letters up to specified Lenght.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "comination"
+  ],
+  "author": "Masoud Rahmani",
+  "license": "GPL-3.0-only",
+  "devDependencies": {
+    "eslint": "^8.30.0"
+  }
+}
