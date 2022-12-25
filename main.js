@@ -1,7 +1,10 @@
 
-const { SetNew, superSetCalculator } = require('./All_comb_word_fn.js');
+const { SetNew } = require('./All_comb_word_fn.js');
 const path = require('path');
 const u = require('./util.js');
+// eslint-disable-next-line no-undef
+const currentDir = __dirname;
+const letters = u.GetJsonObj(path.join(currentDir, 'config/letters.json'));
 
 //نکات : docs.md
 //حتما خوانده شود
@@ -9,24 +12,21 @@ const u = require('./util.js');
 //یک حذف تکراری ها در مواقع مناسب، نیاز مند پیاده سازی دارد برای آرایه
 //حذف موارد نامناسب در مواقع مناسب نیاز به پیاده سازی
 //پارالل
+//در سوپر ست وقتی از حد میگذرد ادامه داده در یک فضای جدید ذخیره میشود، برای همین در هنگام پاک سازی تکراری ها این داده ها نسبت به هم پاک سازی نمیشوند.
+//به همین دلیل تکراری داریم.
 
-let chars = ['m', 'M', '13911281', '13711371', '1271366411', '@', '#', '!'];
+let chars = letters;
 let notFirst = [];
 let notLast = [];
 let iteration = 3;
 let result;
 
-
-perfTime(() => {
-    result = superSetCalculator(chars, iteration, notFirst, notLast); // check high?
-    WriteResult(result, 1);
-});
+// SetNew Algorithm is the best one so far -> no known issue 
 perfTime(() => {
     result = SetNew(chars, iteration, notFirst, notLast); //is there any problem, large?
     WriteResult(result, 3);
 
 });
-
 
 function perfTime(func) {
     console.time();
@@ -39,8 +39,7 @@ function perfTime(func) {
 }
 
 function WriteResult(result, t) {
-    // eslint-disable-next-line no-undef
-    const filepath = path.join(__dirname, './result', `${Date.now() + Math.random()}.txt`);
+    const filepath = path.join(currentDir, './result', `${Date.now() + Math.random()}.txt`);
 
     const write = (r, desc) => {
         u.WriteToFile(filepath, `\t\t ${desc} ${new Date().toLocaleString()} \t\t\n`);

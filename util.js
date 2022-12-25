@@ -28,5 +28,12 @@ function WriteToFile(path, data) {
 function ShortError(err, count) {
     return (err.message) ? `${err.message.substring(0, count)}...` : '';
 }
-
-module.exports = { getByIndex, WriteArrayToFile, WriteToFile, ShortError };
+function GetJsonObj(path) {
+    try {
+        return JSON.parse(fs.readFileSync(path));
+    } catch (err) {
+        console.log(ShortError(err));
+        return false;
+    }
+}
+module.exports = { getByIndex, WriteArrayToFile, WriteToFile, ShortError, GetJsonObj };
