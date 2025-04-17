@@ -18,7 +18,7 @@ const letters = u.GetJsonObj(path.join(currentDir, 'config/letters.json'));
 let chars = letters;
 let notFirst = [];
 let notLast = [];
-let iteration = 3;
+let iteration = 1;
 let result;
 
 // SetNew Algorithm is the best one so far -> no known issue 
